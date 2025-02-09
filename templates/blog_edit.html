@@ -1,0 +1,16 @@
+<!-- templates/blog_edit.html -->
+{% extends "base.html" %} {% block title %}Edit Blog Post - My Blog Site{%
+endblock %} {% block content %}
+<h2 class="ui header">Edit Blog Post</h2>
+<form class="ui form" method="POST">
+  <div class="field">
+    <label>Title</label>
+    <input type="text" name="title" value="{{ blog.title }}" required />
+  </div>
+  <div class="field">
+    <label>Content</label>
+    <textarea name="content" required>{{ blog.content }}</textarea>
+  </div>
+  <button class="ui button primary" type="submit">Update Post</button>
+</form>
+{% endblock %}

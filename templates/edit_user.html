@@ -1,0 +1,20 @@
+<!-- templates/edit_user.html -->
+{% extends "base.html" %}
+{% block title %}Edit User - My Blog Site{% endblock %}
+{% block content %}
+  <h2 class="ui header">Edit User</h2>
+  <form class="ui form" method="POST">
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" value="{{ user.username }}" required>
+    </div>
+    <div class="field">
+      <label>Role</label>
+      <select name="role" class="ui dropdown">
+        <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+        <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+      </select>
+    </div>
+    <button class="ui button primary" type="submit">Update User</button>
+  </form>
+{% endblock %}

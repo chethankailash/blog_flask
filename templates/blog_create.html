@@ -1,0 +1,20 @@
+<!-- templates/blog_create.html -->
+{% extends "base.html" %} {% block title %}Create Blog Post - My Blog Site{%
+endblock %} {% block content %}
+<h2 class="ui header">Create Blog Post</h2>
+<form class="ui form" method="POST">
+  <div class="field">
+    <label>Title</label>
+    <input type="text" name="title" placeholder="Blog title" required />
+  </div>
+  <div class="field">
+    <label>Content</label>
+    <textarea
+      name="content"
+      placeholder="Write your blog content here..."
+      required
+    ></textarea>
+  </div>
+  <button class="ui button primary" type="submit">Create Post</button>
+</form>
+{% endblock %}

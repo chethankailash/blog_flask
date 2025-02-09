@@ -1,0 +1,21 @@
+<!-- templates/register.html -->
+{% extends "base.html" %} {% block title %}Register - My Blog Site{% endblock %}
+{% block content %}
+<h2 class="ui header">Register</h2>
+<form class="ui form" method="POST">
+  <div class="field">
+    <label>Username</label>
+    <input type="text" name="username" placeholder="Enter username" required />
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter password"
+      required
+    />
+  </div>
+  <button class="ui button primary" type="submit">Register</button>
+</form>
+{% endblock %}

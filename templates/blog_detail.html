@@ -1,0 +1,10 @@
+<!-- templates/blog_detail.html -->
+{% extends "base.html" %} {% block title %}{{ blog.title }} - My Blog Site{%
+endblock %} {% block content %}
+<h2 class="ui header">{{ blog.title }}</h2>
+<p class="meta">By {{ blog.author }}</p>
+<div class="blog-content">{{ blog.content }}</div>
+<div style="margin-top: 20px">
+  <a href="{{ url_for('index') }}" class="ui button">Back to Home</a>
+</div>
+{% endblock %}

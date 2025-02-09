@@ -1,0 +1,62 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}My Blog Site{% endblock %}</title>
+    <!-- Semantic UI CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <!-- jQuery and Semantic UI JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  </head>
+  <body>
+    <div class="ui container" style="margin-top: 20px">
+      <div class="ui secondary menu">
+        <div class="item">
+          <img
+            src="{{ url_for('static', filename='images/batman.png') }}"
+            alt="Logo"
+            style="height: 40px"
+          />
+        </div>
+        <a href="{{ url_for('index') }}" class="item">Home</a>
+        {% if session.username %}
+        <a href="{{ url_for('create_blog') }}" class="item">Create Blog</a>
+        {% if session.role == 'admin' %}
+        <a href="{{ url_for('admin') }}" class="item">Admin</a>
+        {% endif %}
+        <div class="right menu">
+          <div class="item">
+            Logged in as: <strong>{{ session.username }}</strong>
+          </div>
+          <a href="{{ url_for('logout') }}" class="item">Logout</a>
+        </div>
+        {% else %}
+        <div class="right menu">
+          <a href="{{ url_for('login') }}" class="item">Login</a>
+          <a href="{{ url_for('register') }}" class="item">Register</a>
+        </div>
+        {% endif %}
+      </div>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="ui message">
+        <ul class="list">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
